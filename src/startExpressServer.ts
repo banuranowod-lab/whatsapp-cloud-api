@@ -68,7 +68,49 @@ export const startExpressServer = (
       res.sendStatus(202);
       return;
     }
+   // 🧠 Custom features by Lasith & GPT-5
+    const message = req.body.entry[0].changes[0].value.messages?.[0];
+    if (!message) {
+      res.sendStatus(200);
+      return;
+    }
 
+    const from = message.from;
+    const text = message.text?.body?.toLowerCase() || "";
+
+    // 🎬 Film Downloader
+    if (text.startsWith("film ")) {
+      const filmName = text.replace("film ", "").trim();
+      await sendMessage(from, `🎥 Searching for film: ${filmName}...`);
+      await sendMessage(from, `✅ Here’s your film link: https://example.com/search?film=${encodeURIComponent(filmName)}`);
+    }
+
+    // 🎵 Song Downloader
+    if (text.startsWith("song ")) {
+      const songName = text.replace("song ", "").trim();
+      await sendMessage(from, `🎶 Searching for song: ${songName}...`);
+      await sendMessage(from, `✅ Your song link: https://example.com/music?title=${encodeURIComponent(songName)}`);
+    }
+
+    // 🖼️ DP Downloader
+    if (text.includes("dp download")) {
+      await sendMessage(from, "🖼️ Please send the contact or profile link to download their DP!");
+    }
+
+    // 📥 Status Downloader
+    if (text.includes("status download")) {
+      await sendMessage(from, "📲 Send the status link to download it.");
+    }
+
+    // 🚫 Anti-Spam
+    if (text.includes("anti spam on")) {
+      await sendMessage(from, "🚫 Anti-spam mode enabled!");
+    }
+
+    // 🤖 Auto Reply
+    if (text.includes("auto reply on")) {
+      await sendMessage(from, "🤖 Auto reply is now active!");
+        }
     const {
       from,
       id,
