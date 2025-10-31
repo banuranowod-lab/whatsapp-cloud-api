@@ -1,17 +1,16 @@
 import { sendRequestHelper, SendMessageResult } from './sendRequestHelper';
 
 // ================================
-// 🔧 Direct configuration
+// 🔧 WhatsApp Cloud API Settings
 // ================================
-const FROM_PHONE_NUMBER_ID = '883684478154396'; // <-- ඔබගේ WhatsApp Number ID
-const ACCESS_TOKEN = 'EAAhlMhNVkDkBP3EZApVGZClsy2eyEwwMeg2d1qswRxX7NZAHj9pNZBQbwXunS26lRAWZA3GCqcMJrvqkQZCkZA3JXdrHK0mB436Thh86xtLQ2vYaQtZBCQSB7uGW8e8u5CRLjXhVlyXraoSafs7ZCpZAkS7jP1rJ9AQs1RxZCsUp39jhX6iXkSUeZCRtHa86DnSjQ4LpxwZDZD'; // <-- ඔබගේ Token එක
+const FROM_PHONE_NUMBER_ID = '883684478154396'; // ← ඔබගේ WhatsApp Number ID
+const ACCESS_TOKEN = 'EAAhlMhNVkDkBP3EZApVGZClsy2eyEwwMeg2d1qswRxX7NZAHj9pNZBQbwXunS26lRAWZA3GCqcMJrvqkQZCkZA3JXdrHK0mB436Thh86xtLQ2vYaQtZBCQSB7uGW8e8u5CRLjXhVlyXraoSafs7ZCpZAkS7jP1rJ9AQs1RxZCsUp39jhX6iXkSUeZCRtHa86DnSjQ4LpxwZDZD';
 const API_VERSION = 'v14.0';
 
-// Initialize helper
 const sendRequest = sendRequestHelper(FROM_PHONE_NUMBER_ID, ACCESS_TOKEN, API_VERSION);
 
 // ================================
-// ✉️ Send Text Message
+// 💬 Send Text Message
 // ================================
 export async function sendMessage(to: string, text: string) {
   try {
@@ -30,7 +29,7 @@ export async function sendMessage(to: string, text: string) {
 }
 
 // ================================
-// 🔊 Send Audio File
+// 🎧 Send Audio File
 // ================================
 export async function sendAudio(to: string, audioUrl: string) {
   try {
